@@ -1,0 +1,29 @@
+--[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
+
+cards = {}
+
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad()
+    --[[ print('onLoad!') --]]
+    ace = getObjectFromGUID('1e0795')
+    king = getObjectFromGUID('f4aef9')
+    queen = getObjectFromGUID('ef6dad')
+    jack = getObjectFromGUID('52910a')
+    ten = getObjectFromGUID('ae60da')
+    nine = getObjectFromGUID('9e71a3')
+    cards = {ace,king,queen,jack,ten,nine}
+end
+
+function getCards()
+  return cards
+end
+
+function flipCardsAfter5Seconds()
+  Wait.time(
+  function()
+    for cardCount = 1, #cards do
+       cards[cardCount].flip()
+    end
+    print(cards[math.random(1,#cards)].getName())
+  end, 5)
+end
