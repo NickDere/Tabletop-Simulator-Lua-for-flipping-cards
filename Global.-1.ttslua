@@ -1,6 +1,7 @@
 --[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
-
-cards = {}
+SETUP_DECK_GUID = "a1df95"
+CARD_ZONE_GUID = "909716"
+stagedCards = {}
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
@@ -11,19 +12,10 @@ function onLoad()
     jack = getObjectFromGUID('52910a')
     ten = getObjectFromGUID('ae60da')
     nine = getObjectFromGUID('9e71a3')
-    cards = {ace,king,queen,jack,ten,nine}
+    stagedCards = {ace, king, queen, jack, ten, nine}
+    --setupDeck = getObjectFromGUID(SETUP_DECK_GUID)
 end
 
 function getCards()
-  return cards
-end
-
-function flipCardsAfter5Seconds()
-  Wait.time(
-  function()
-    for cardCount = 1, #cards do
-       cards[cardCount].flip()
-    end
-    print(cards[math.random(1,#cards)].getName())
-  end, 5)
+  return stagedCards
 end

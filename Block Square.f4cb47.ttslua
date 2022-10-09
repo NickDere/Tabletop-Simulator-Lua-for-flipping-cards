@@ -1,4 +1,0 @@
-
-function buttonClick()
-  Global.call("flipCardsAfter5Seconds")
-end
